@@ -1,0 +1,18 @@
+services:
+  notepad:
+    image: shuhanmirza-notepad:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    restart: unless-stopped
+    environment:
+      VIRTUAL_HOST: txt.shuhanmirza.com
+      VIRTUAL_PORT: 8000
+      LETSENCRYPT_HOST: txt.shuhanmirza.com
+      LETSENCRYPT_EMAIL: shuhan.mirza@gmail.com
+
+networks:
+  default:
+    name: nginx-proxy
+    external: true

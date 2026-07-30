@@ -1,0 +1,4 @@
+services:
+  notepad:
+    ports:
+      - "${HOST_PORT:-8001}:8000"
