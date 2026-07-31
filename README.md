@@ -15,6 +15,7 @@ The primary deployment is [txt.shuhanmirza.com](https://txt.shuhanmirza.com).
 - Display word, character, and line counts
 - Copy a document to the clipboard or download it as a `.txt` file
 - Choose between Carbon, Paper, and Midnight themes
+- Choose from five bundled, notepad-friendly monospace fonts
 - Support `Ctrl/Command + S` to save
 - Work on desktop and mobile screen sizes
 
@@ -39,6 +40,7 @@ stored documents.
 - [Vitest](https://vitest.dev/) for automated tests
 - [Docker](https://www.docker.com/) and Docker Compose for container deployment
 - [Nginx](https://nginx.org/) for serving the production build
+- [Fontsource](https://fontsource.org/) for self-hosted interface fonts
 
 ## Local development
 

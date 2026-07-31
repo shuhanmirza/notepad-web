@@ -2,9 +2,9 @@
   color: #d8ded9;
   background: #0c0f0d;
   color-scheme: dark;
-  font-family:
-    "JetBrains Mono", "SFMono-Regular", "Cascadia Code", "Roboto Mono",
-    Consolas, "Liberation Mono", monospace;
+  --app-font:
+    "JetBrains Mono Variable", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-family: var(--app-font);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   --page: #0c0f0d;
@@ -28,6 +28,26 @@
   --workspace-glow: rgba(130, 212, 154, 0.035);
   --placeholder: #343c37;
   --scrim: rgba(0, 0, 0, 0.58);
+}
+
+:root[data-font="ibm-plex"] {
+  --app-font: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+:root[data-font="source-code"] {
+  --app-font:
+    "Source Code Pro Variable", "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+:root[data-font="fira-code"] {
+  --app-font:
+    "Fira Code Variable", "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+:root[data-font="system"] {
+  --app-font:
+    ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas,
+    "Liberation Mono", monospace;
 }
 
 :root[data-theme="paper"] {
@@ -324,7 +344,7 @@ textarea:focus-visible,
   border-top: 1px solid var(--border);
 }
 
-.theme-control {
+.preference-control {
   display: flex;
   min-height: 46px;
   align-items: center;
@@ -338,8 +358,9 @@ textarea:focus-visible,
   text-transform: uppercase;
 }
 
-.theme-control select {
-  max-width: 116px;
+.preference-control select {
+  width: 144px;
+  max-width: 144px;
   padding: 6px 24px 6px 8px;
   color: var(--text);
   background: var(--panel-raised);
@@ -349,6 +370,26 @@ textarea:focus-visible,
   font-size: 11px;
   letter-spacing: 0;
   text-transform: none;
+}
+
+.preference-control option[value="jetbrains"] {
+  font-family: "JetBrains Mono Variable", monospace;
+}
+
+.preference-control option[value="ibm-plex"] {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.preference-control option[value="source-code"] {
+  font-family: "Source Code Pro Variable", monospace;
+}
+
+.preference-control option[value="fira-code"] {
+  font-family: "Fira Code Variable", monospace;
+}
+
+.preference-control option[value="system"] {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 }
 
 .storage-note {

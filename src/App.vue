@@ -2,6 +2,7 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import {
   ACTIVE_DOCUMENT_STORAGE_KEY,
+  FONT_STORAGE_KEY,
   THEME_STORAGE_KEY,
 } from './config'
 import {
@@ -17,12 +18,31 @@ import { DocumentSync } from './sync'
 import type { SyncMessage, TextDocument } from './types'
 
 const THEMES = ['carbon', 'paper', 'midnight'] as const
+const FONTS = [
+  'jetbrains',
+  'ibm-plex',
+  'source-code',
+  'fira-code',
+  'system',
+] as const
 
 type Theme = (typeof THEMES)[number]
+type FontChoice = (typeof FONTS)[number]
 
 function initialTheme(): Theme {
   const savedTheme = localStorage.getItem(THEME_STORAGE_KEY)
   return THEMES.includes(savedTheme as Theme) ? (savedTheme as Theme) : 'carbon'
+}
+
+function initialFont(): FontChoice {
+  const savedFont = localStorage.getItem(FONT_STORAGE_KEY)
+  return FONTS.includes(savedFont as FontChoice)
+    ? (savedFont as FontChoice)
+    : 'jetbrains'
+}
+
+function applyFont(nextFont: FontChoice) {
+  document.documentElement.dataset.font = nextFont
 }
 
 function applyTheme(nextTheme: Theme) {
@@ -49,6 +69,7 @@ const isSidebarOpen = ref(false)
 const saveState = ref<'saved' | 'saving' | 'error'>('saved')
 const copyState = ref<'idle' | 'copied' | 'error'>('idle')
 const theme = ref<Theme>(initialTheme())
+const fontChoice = ref<FontChoice>(initialFont())
 const presenceRevision = ref(0)
 const editor = ref<HTMLTextAreaElement | null>(null)
 
@@ -57,6 +78,7 @@ let removePresenceListener: (() => void) | undefined
 let copyStateTimer: number | undefined
 
 applyTheme(theme.value)
+applyFont(fontChoice.value)
 
 const activeDocument = computed(() =>
   documents.value.find((document) => document.id === activeDocumentId.value),
@@ -244,6 +266,15 @@ function changeTheme(event: Event) {
   localStorage.setItem(THEME_STORAGE_KEY, nextTheme)
 }
 
+function changeFont(event: Event) {
+  const nextFont = (event.target as HTMLSelectElement).value as FontChoice
+  if (!FONTS.includes(nextFont)) return
+
+  fontChoice.value = nextFont
+  applyFont(nextFont)
+  localStorage.setItem(FONT_STORAGE_KEY, nextFont)
+}
+
 async function deleteDocument(documentId: string) {
   const document = documents.value.find((item) => item.id === documentId)
   if (!document) return
@@ -418,12 +449,27 @@ onBeforeUnmount(() => {
       </nav>
 
       <footer class="sidebar-footer">
-        <label class="theme-control">
+        <label class="preference-control">
           <span>Theme</span>
           <select :value="theme" aria-label="Color theme" @change="changeTheme">
             <option value="carbon">Carbon</option>
             <option value="paper">Paper</option>
             <option value="midnight">Midnight</option>
+          </select>
+        </label>
+
+        <label class="preference-control">
+          <span>Font</span>
+          <select
+            :value="fontChoice"
+            aria-label="Editor font"
+            @change="changeFont"
+          >
+            <option value="jetbrains">JetBrains Mono</option>
+            <option value="ibm-plex">IBM Plex Mono</option>
+            <option value="source-code">Source Code Pro</option>
+            <option value="fira-code">Fira Code</option>
+            <option value="system">System Mono</option>
           </select>
         </label>
 
