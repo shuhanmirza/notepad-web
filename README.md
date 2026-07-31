@@ -156,6 +156,7 @@ docker compose logs --tail=100 notepad
 │   ├── App.vue              Main editor interface and document actions
 │   ├── config.ts            Shared project and browser-storage identifiers
 │   ├── document.ts          Document creation, versioning, and text statistics
+│   ├── favicon.ts           Theme-aware favicon rendering
 │   ├── storage.ts           IndexedDB persistence
 │   ├── sync.ts              Cross-tab updates and tab presence
 │   ├── styles.css           Application layout and visual design

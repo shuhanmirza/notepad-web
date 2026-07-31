@@ -11,6 +11,7 @@ import {
   textFileName,
   textStats,
 } from './document'
+import { updateFavicon } from './favicon'
 import { getDocuments, removeDocument, saveDocument } from './storage'
 import { DocumentSync } from './sync'
 import type { SyncMessage, TextDocument } from './types'
@@ -19,23 +20,24 @@ const THEMES = ['carbon', 'paper', 'midnight'] as const
 
 type Theme = (typeof THEMES)[number]
 
-const THEME_COLORS: Record<Theme, string> = {
-  carbon: '#0c0f0d',
-  paper: '#f7f5ef',
-  midnight: '#090d16',
-}
-
 function initialTheme(): Theme {
   const savedTheme = localStorage.getItem(THEME_STORAGE_KEY)
   return THEMES.includes(savedTheme as Theme) ? (savedTheme as Theme) : 'carbon'
 }
 
 function applyTheme(nextTheme: Theme) {
-  document.documentElement.dataset.theme = nextTheme
+  const root = document.documentElement
+  root.dataset.theme = nextTheme
+  const themeStyles = getComputedStyle(root)
+  const pageColor = themeStyles.getPropertyValue('--page').trim()
   const themeColor = document.querySelector<HTMLMetaElement>(
     'meta[name="theme-color"]',
   )
-  if (themeColor) themeColor.content = THEME_COLORS[nextTheme]
+  if (themeColor) themeColor.content = pageColor
+  updateFavicon({
+    background: themeStyles.getPropertyValue('--accent').trim(),
+    foreground: themeStyles.getPropertyValue('--brand-ink').trim(),
+  })
 }
 
 const sync = new DocumentSync()
