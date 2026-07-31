@@ -152,7 +152,7 @@ textarea:focus-visible,
   color: var(--brand-ink);
   background: var(--accent);
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: -0.04em;
 }
@@ -160,7 +160,7 @@ textarea:focus-visible,
 .brand h1 {
   margin: 0 0 4px;
   color: var(--text);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 650;
   letter-spacing: -0.02em;
 }
@@ -168,7 +168,7 @@ textarea:focus-visible,
 .brand p {
   margin: 0;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .new-document {
@@ -183,7 +183,7 @@ textarea:focus-visible,
   border: 1px solid var(--accent-border);
   border-radius: 7px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   text-align: left;
   transition:
     background 140ms ease,
@@ -196,7 +196,7 @@ textarea:focus-visible,
 }
 
 .new-document > span {
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 300;
 }
 
@@ -205,7 +205,7 @@ textarea:focus-visible,
   justify-content: space-between;
   padding: 0 20px 8px;
   color: var(--faint);
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -283,7 +283,7 @@ textarea:focus-visible,
 
 .document-copy strong {
   overflow: hidden;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 520;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -291,7 +291,7 @@ textarea:focus-visible,
 
 .document-copy small {
   color: var(--faint);
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .delete-document {
@@ -306,7 +306,7 @@ textarea:focus-visible,
   border: 0;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1;
 }
 
@@ -332,7 +332,7 @@ textarea:focus-visible,
   gap: 12px;
   padding: 0 20px;
   color: var(--faint);
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -346,7 +346,7 @@ textarea:focus-visible,
   border: 1px solid var(--border);
   border-radius: 5px;
   cursor: pointer;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0;
   text-transform: none;
 }
@@ -358,7 +358,7 @@ textarea:focus-visible,
   gap: 8px;
   padding: 0 20px;
   color: var(--faint);
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .storage-dot,
@@ -418,7 +418,7 @@ textarea:focus-visible,
   color: var(--text);
   background: transparent;
   border: 0;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   letter-spacing: -0.02em;
   text-overflow: ellipsis;
@@ -445,7 +445,7 @@ textarea:focus-visible,
   border: 1px solid var(--border);
   border-radius: 5px;
   cursor: pointer;
-  font-size: 9px;
+  font-size: 11px;
   white-space: nowrap;
   transition:
     color 120ms ease,
@@ -455,7 +455,7 @@ textarea:focus-visible,
 
 .action-button > span:first-child {
   color: var(--faint);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .action-button:hover {
@@ -478,7 +478,7 @@ textarea:focus-visible,
   align-items: center;
   gap: 8px;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 10px;
   white-space: nowrap;
 }
 
@@ -524,7 +524,7 @@ textarea:focus-visible,
   padding: 0 clamp(18px, 3vw, 44px);
   color: var(--faint);
   border-top: 1px solid var(--border);
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .document-stats,
@@ -547,7 +547,7 @@ textarea:focus-visible,
 }
 
 .sync-icon {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .loading-state {
@@ -557,7 +557,7 @@ textarea:focus-visible,
   justify-content: center;
   gap: 10px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .loading-state span {
