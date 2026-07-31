@@ -477,6 +477,15 @@ onBeforeUnmount(() => {
           <span class="storage-dot" aria-hidden="true" />
           Stored only in this browser
         </div>
+
+        <a
+          class="developer-mark"
+          href="https://shuhanmirza.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          // built by shuhan
+        </a>
       </footer>
     </aside>
 
