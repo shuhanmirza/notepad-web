@@ -128,6 +128,30 @@ function updateContent(event: Event) {
   markChanged(activeDocument.value)
 }
 
+function handleEditorKeydown(event: KeyboardEvent) {
+  if (
+    event.key !== 'Tab' ||
+    event.shiftKey ||
+    event.ctrlKey ||
+    event.metaKey ||
+    event.altKey ||
+    !activeDocument.value
+  ) {
+    return
+  }
+
+  event.preventDefault()
+  const textarea = event.currentTarget as HTMLTextAreaElement
+  textarea.setRangeText(
+    '\t',
+    textarea.selectionStart,
+    textarea.selectionEnd,
+    'end',
+  )
+  activeDocument.value.content = textarea.value
+  markChanged(activeDocument.value)
+}
+
 function updateTitle(event: Event) {
   if (!activeDocument.value) return
 
@@ -474,6 +498,7 @@ onBeforeUnmount(() => {
           placeholder="Start typing…"
           spellcheck="true"
           @input="updateContent"
+          @keydown="handleEditorKeydown"
         />
 
         <footer class="status-bar">
